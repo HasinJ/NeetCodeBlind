@@ -11,22 +11,24 @@ def checkInclusion(s1: str, s2: str) -> bool:
         else:
             need[i]=1
             accneed+=1
+    print(accneed)
 
     right=0
     while right < len(s2):
         c = s2[right]
-        print(c)
+        print(c,":")
         #print(c,need)
         if (c in need): #something is found
             for i in range(right, right+len(s1)):
-                if(i>len(s2)): return False
+                c=s2[i]
                 if(c in need):
                     have[c] = have.get(c,0) + 1
-                if(c not in need):
-                    have={}
-                    acchave+=1
-                    break
-                if acchave==len(s1): return True
+                    if(have[c] == need[c]): acchave+=1
+                if acchave==accneed: return True
+            have={}
+            acchave=0
+
+                right=i
         right+=1
 
 
@@ -35,8 +37,9 @@ def checkInclusion(s1: str, s2: str) -> bool:
 
     return res
 
-print(checkInclusion("ab", "eidbaooo"))
-print(checkInclusion("ab", "eidboaoo"))
-print(checkInclusion("bab", "eidbaaooo"))
+#print(checkInclusion("ab", "eidboaoo"))
+#print(checkInclusion("bab", "eidbaaooo"))
+#print(checkInclusion("ab", "eidbaooo"))
+print(checkInclusion("hello", "ooolleoooleh"))
 
 #if ("h" not in "ah"): print("no")
