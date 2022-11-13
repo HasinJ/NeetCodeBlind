@@ -3,43 +3,53 @@
 
 def checkInclusion(s1: str, s2: str) -> bool:
     res = False;
-    have, need = {}, {}
-    acchave , accneed = 0, 0
+    window, need = {}, {}
+    length = 0
+    left = 0
 
     for i in s1:
-        if (i in need): need[i]+=1
-        else:
-            need[i]=1
-            accneed+=1
-    print(accneed)
+        need[i] = need.get(i,0) + 1
 
-    right=0
-    while right < len(s2):
-        c = s2[right]
+    for i in range(len(s2)):
+        c = s2[i]
+
         print(c,":")
-        #print(c,need)
-        if (c in need): #something is found
-            for i in range(right, right+len(s1)):
-                c=s2[i]
-                if(c in need):
-                    have[c] = have.get(c,0) + 1
-                    if(have[c] == need[c]): acchave+=1
-                if acchave==accneed: return True
-            have={}
-            acchave=0
+        if c in s1:
+            window[c] = window.get(c,0) + 1
+            length += 1
 
-                right=i
-        right+=1
+            while(window[c] > need[c]):
+
+                window[s2[left]] = window.get(s2[left]) - 1
+                if(window[s2[left]] == 0): window.pop(s2[left])
+                length-=1
+                left+=1
+
+            if length == len(s1): return True
+            #print(window)
+
+        else:
+            #print("reset")
+            window = {}
+            checkwindow = 0
+            length = 0
+            left+=1
 
 
-
-        #if(acchave==accneed): return True
 
     return res
 
-#print(checkInclusion("ab", "eidboaoo"))
-#print(checkInclusion("bab", "eidbaaooo"))
-#print(checkInclusion("ab", "eidbaooo"))
+print(checkInclusion("ab","ab")) #true
+print(checkInclusion("bcac","acbc")) #true
+print(checkInclusion("ab","acb"))
+print(checkInclusion("adc","dcda")) #true
+
+print(checkInclusion("ab", "eidboaoo"))
+print(checkInclusion("bab", "eidbaaooo"))
+print(checkInclusion("ab", "eidbaooo")) #true
 print(checkInclusion("hello", "ooolleoooleh"))
+print(checkInclusion("abc", "ccbbaa"))
+print(checkInclusion("dinitrophenylhydrazine","acetylphenylhydrazine"))
+
 
 #if ("h" not in "ah"): print("no")
