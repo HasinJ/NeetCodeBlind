@@ -2,15 +2,12 @@
 
 import collections
 def groupAnagrams(strs):
-    print(strs)
     res = collections.defaultdict(dict)
-    hash = collections.defaultdict(dict)
+    arr = []
     for x in range(len(strs)):
         for y in range(len(strs[x])):
             c = strs[x][y]
-            hash[c] = hash.get(c,0) + 1
-        print(hash)
-        res[hash][[].append(strs[x])]
+            print(c)
 
 
     return res
