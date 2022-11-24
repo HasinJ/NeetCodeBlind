@@ -11,9 +11,9 @@ def longestConsecutive(nums):
         visited[nums[i]] = False
 
     for visitingnum, hasvisited in visited.items():
-        if(hasvisited) == True: continue
         res=0
         while visitingnum in visited:
+            if(visitingnum == True): continue
             print(f"visiting: {visitingnum}")
             res = count[visitingnum] + res
             visited[visitingnum] = True
