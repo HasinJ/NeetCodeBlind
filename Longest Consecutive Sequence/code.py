@@ -1,15 +1,9 @@
 
 
 def longestConsecutive(nums):
-    print(len(nums))
     finalres = 0
-    count = {}
-    visited = {}
-
-
     count = set(nums)
 
-    i = 0
     while len(count):
         element = count.pop()
         res = 0
