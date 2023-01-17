@@ -42,7 +42,11 @@ print(minWindow("ADOBECODEBANC","ABC"))
 #print(minWindow("a","a"))
 #print(minWindow("a","aa"))
 #print(minWindow("abc","cba"))
+<<<<<<< HEAD
 print(minWindow("bbaa","aba"))
 print(minWindow("acbbaca","aba"))
+=======
+print(minWindow("acbacca","aba"))
+>>>>>>> ce065ac1e9848372e6460fd01a4ddeee036b25ff
 #print(minWindow("a","b"))
 #print("abc" == "bca")
