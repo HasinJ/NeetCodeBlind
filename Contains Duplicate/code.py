@@ -1,6 +1,8 @@
 def containsDuplicate(nums):
-    distinct = set(nums)
-    if len(nums) == len(distinct): return False
-    return True
+    unique = set()
+    for i in range(len(nums)):
+       if nums[i] not in unique: unique.add(nums[i])
+       else: return True
+    return Fals
 
 print(containsDuplicate([1,2,3,1]))
